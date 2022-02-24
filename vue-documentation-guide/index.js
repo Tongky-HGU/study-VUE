@@ -5,6 +5,11 @@ const app = new Vue({
     seen: true,
     todos: [{ text: "a" }, { text: "b" }, { text: "c" }],
   },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split("").reverse().join("");
+    },
+  },
 });
 
 app.message = "i have changed data";
