@@ -1,26 +1,44 @@
 <template>
   <div>
-    <a href="#/">Home</a> | <a href="#/about">About</a> |
-    <a href="#/non-existent-path">Broken Link</a>
+    <a href="/">home</a> |
+    <a v-for="page in pages" :key="page" :href="`/${page}`"> {{ page }} | </a>
     <component :is="currentView" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from "./pages/HelloWorld.vue";
+import HandlingUserInput from "./pages/HandlingUserInput.vue";
+import AttributeBindings from "./pages/AttributeBindings.vue";
+import ConditionalsAndLoops from "./pages/ConditionalsAndLoops.vue";
+import FormBindings from "./pages/FormBindings.vue";
+import SimpleComponent from "./pages/SimpleComponent.vue";
+import FetchingData from "./pages/FetchingData.vue";
+import GridWithSortAndFilter from "./pages/GridWithSortAndFilter.vue";
+
 import NotFound from "./pages/NotFound.vue";
 
-const routes = { "/": HelloWorld };
+const routes = {
+  "/": HelloWorld,
+  "/1": HandlingUserInput,
+  "/2": AttributeBindings,
+  "/3": ConditionalsAndLoops,
+  "/4": FormBindings,
+  "/5": SimpleComponent,
+  "/6": FetchingData,
+  "/7": GridWithSortAndFilter,
+};
 
 export default {
   data() {
     return {
-      currentPath: window.location.hash,
+      pages: new Array(7).fill(0).map((_, idx) => idx + 1),
+      currentPath: window.location.pathname,
     };
   },
   computed: {
     currentView() {
-      return routes[this.currentPath.slice(1) || "/"] || NotFound;
+      return routes[this.currentPath || "/"] || NotFound;
     },
   },
   mounted() {
