@@ -2,6 +2,7 @@
   <div>
     <a href="/">home</a> |
     <a v-for="page in pages" :key="page" :href="`/${page}`"> {{ page }} | </a>
+    <a href="/gui">GUI</a>
     <component :is="currentView" />
   </div>
 </template>
@@ -17,6 +18,7 @@ import FetchingData from "./pages/FetchingData.vue";
 import GridWithSortAndFilter from "./pages/GridWithSortAndFilter.vue";
 
 import NotFound from "./pages/NotFound.vue";
+import GUIExamples from "./pages/GUIExamples.vue";
 
 const routes = {
   "/": HelloWorld,
@@ -27,6 +29,7 @@ const routes = {
   "/5": SimpleComponent,
   "/6": FetchingData,
   "/7": GridWithSortAndFilter,
+  "/gui": GUIExamples,
 };
 
 export default {
