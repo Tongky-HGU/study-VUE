@@ -1,4 +1,8 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+  transpileDependencies: true,
+  //! prefetch 종료
+  // chainWebpack: (config) => {
+  //   config.plugins.delete("prefetch");
+  // },
+});
