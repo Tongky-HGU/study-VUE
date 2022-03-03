@@ -7,4 +7,9 @@ const app = createApp(App);
 
 app.use(router);
 app.mixin(mixins);
+app.directive("check-render", {
+  mounted(el) {
+    console.log("render", el);
+  },
+});
 app.mount("#app");
